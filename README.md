@@ -1,1 +1,1 @@
-# week6_exercises
+# COMP0210 Week 6 Exercises
