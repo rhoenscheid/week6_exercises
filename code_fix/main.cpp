@@ -6,7 +6,7 @@ class Array {
     Array(int nn_in, int nm_in)
     : nn(nn_in)
     , nm(nm_in)
-    , total_size(nn*nm)
+    , total_size(nn_in*nm_in)
     , data(nullptr)
     {
       data = new int[total_size];
@@ -43,7 +43,7 @@ class Array {
       // Search for val in array
       for (int i=0; i<nn; ++i) {
         for (int j=0; j<nm; ++j) {
-          if(get(i,j)=val) {
+          if(get(i,j) == val) {
             return true;
           }
         }
@@ -55,7 +55,7 @@ class Array {
       // Print to stdout
       for (int i=0; i<nn; ++i) {
         for (int j=0; j<nm; ++j) {
-          std::cout << get(j,i);
+          std::cout << get(i,j);
         }
         std::cout << std::endl;
       }
@@ -70,13 +70,15 @@ class Array {
       // Change size of array
       int total_size_new = nn_in*nm_in;
       // Create new data
-      auto data_new = new int[total_size_new];
+      int * data_new = new int[total_size_new];
       // Copy old data
+
       for(int i=0; i<total_size; ++i) {
         data_new[i] = data[i];
       }
       // Assign new data pointer to old
       data = data_new;
+      delete[] data_new;
       total_size = total_size_new;
       nn = nn_in;
       nm = nm_in;
